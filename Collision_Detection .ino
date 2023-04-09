@@ -5,14 +5,14 @@
  * Refer to www.SurtrTech.com for more detaims
  */
 
-#include <SoftwareSerial.h>        //Libraries required for Serial communication, ic communication, DHT11 and MLX90614
+#include <SoftwareSerial.h>        //Libraries required for Serial communication, ic communication,mpu 6050 sensor
 #include <Wire.h>
 #include <Adafruit_MPU6050.h>
 #include <Adafruit_Sensor.h>
  
 Adafruit_MPU6050 mpu;
 float value = 5.5;   
-String Data_SMS;               //Here's the SMS that we gonna send to the phone number, it may contain DHT data or MLX data
+String Data_SMS;               //Here's the SMS that we gonna send to the phone number, it will contain collission report
 
 
 SoftwareSerial sim800l(2, 3);                     // RX,TX for Arduino and for the module it's TXD RXD, they should be inverted
@@ -21,7 +21,7 @@ SoftwareSerial sim800l(2, 3);                     // RX,TX for Arduino and for t
 void setup()
 {
    
-  sim800l.begin(9600);   //Begin all the communications needed Arduino with PC serial and Arduino with all devices (SIM800L+DHT+MLX)
+  sim800l.begin(9600);   //Begin all the communications needed Arduino with PC serial and Arduino with all devices (SIM800L+mpu 6050)
   Serial.begin(9600);     
  
   Serial.println("Starting ...");
@@ -67,9 +67,19 @@ void loop() {
   Serial.println(a.acceleration.z);
   
    
-  if(a.acceleration.y > (value) ){                   //Same thing if the "MLX" word is found, Serial.print things are optionnal
+  if(a.acceleration.y > (value) ){                  
   
-  Data_SMS = "Crash Detected at location: 27.2046° N, 77.4977° E";
+    if(a.acceleration.y > 15  &&  a.acceleration.y < 25)
+    {
+     
+     Data_SMS = "Crash Detected , magnitude = NOT SEVERE BUT ATTENTION REQUIRED";
+     
+    }
+   else if (a.acceleration.y > 50  )
+   {
+   
+     Data_SMS = "Crash Detected , magnitude = HIGHLY SEVERE AND ATTENTION REQUIRED";
+   }
 
   Send_Data();
 
