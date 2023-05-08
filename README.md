@@ -11,4 +11,4 @@ Sim900l
 LCD screen
 Car Module
 
-This is a collison detction system for raod based vehicles based on vibration and impluse analysis to predict collision. Circuit design and schematics are all added to project directory.
+This is a collison detction system for raod based vehicles based on vibration analysis to predict collision. Circuit design and schematics are all added to project directory.
