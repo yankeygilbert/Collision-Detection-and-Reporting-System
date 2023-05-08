@@ -5,10 +5,10 @@ All about project
 
 ** This system uses: **
 
-Arduino Pro-mini
-MPU6050 accelerometer sensor
-Sim900l
-LCD screen
-Car Module
+  Arduino Pro-mini
+  MPU6050 accelerometer sensor
+  Sim900l
+  LCD screen
+  Car Module
 
 This is a collison detction system for raod based vehicles based on vibration analysis to predict collision. Circuit design and schematics are all added to project directory.
