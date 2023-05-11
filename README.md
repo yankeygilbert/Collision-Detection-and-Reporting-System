@@ -1,7 +1,7 @@
-# Collision-Detection-and-Reporting-System
+# Collision-Detection-and-Reporting-System 
 Collision detection and reporting system for road based vehicles 
 
-All about project
+All about project (undergrad project)
 
 ** This system uses: **
 
